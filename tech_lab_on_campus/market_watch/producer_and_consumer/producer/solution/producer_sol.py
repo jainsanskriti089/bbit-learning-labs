@@ -1,4 +1,6 @@
 import pika
+import os
+from producer_interface import mqProducerInterface
 
 class mqProducer(mqProducerInterface):
     def __init__(self, routing_key: str, exchange_name: str) -> None:
@@ -7,7 +9,7 @@ class mqProducer(mqProducerInterface):
         self.exchange_name = exchange_name
 
         # Call setupRMQConnection
-        setupRMQConnection(self)
+        self.setupRMQConnection()
 
     def setupRMQConnection(self) -> None:
         # Set-up Connection to RabbitMQ service
